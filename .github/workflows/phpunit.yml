@@ -4,9 +4,10 @@ on:
   workflow_call:
     inputs:
       php-version:
-        description: PHP version to use for running the tests
-        required: true
+        description: PHP version to use for running PHPUnit
+        required: false
         type: string
+        default: 8.0
       php-extensions:
         description: Comma-separated list of PHP extensions to install
         required: false
