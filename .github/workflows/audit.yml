@@ -4,8 +4,10 @@ on:
   workflow_call:
     inputs:
       node-version:
-        required: true
+        description: Node version to use for running audit-ci
+        required: false
         type: string
+        default: 14
 
 jobs:
   audit_ci:
