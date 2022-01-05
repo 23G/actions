@@ -1,0 +1,19 @@
+name: audit-npm
+
+on:
+  workflow_call: ~
+
+jobs:
+  audit_ci:
+    runs-on: ubuntu-latest
+    name: Audit NPM dependencies
+    timeout-minutes: 1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+
+      - name: Audit NPM dependencies
+        run: npx audit-ci --moderate

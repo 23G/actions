@@ -17,9 +17,13 @@ jobs:
     uses: 23g/actions/.github/workflows/audit.yml@v2
 ```
 
+> If your project does not use Composer, you may use the `audit-npm.yml@v2`
+> workflow instead.
+
 ### Code style
 
-Requires `23g/coding-standard` and a [PHP_CodeSniffer configuration file](https://github.com/23G/coding-standard/#configuration).
+Requires `23g/coding-standard` and
+a [PHP_CodeSniffer configuration file](https://github.com/23G/coding-standard/#configuration).
 
 ```yml
 # .github/workflows/code-style.yml
