@@ -23,11 +23,8 @@ jobs:
         with:
           node-version: ${{ inputs.node-version }}
 
-      - name: Setup audit-ci
-        run: npm install -g audit-ci
-
       - name: Audit NPM dependencies
-        run: audit-ci --medium
+        run: npx audit-ci --moderate
 
   sensiolabs_security_checker:
     runs-on: ubuntu-latest
