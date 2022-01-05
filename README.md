@@ -14,9 +14,7 @@ on:
     branches: [ main, develop ]
 jobs:
   audit:
-    uses: 23g/actions/.github/workflows/audit.yml@v1
-    with:
-      node-version: 14
+    uses: 23g/actions/.github/workflows/audit.yml@v2
 ```
 
 ### Code style
