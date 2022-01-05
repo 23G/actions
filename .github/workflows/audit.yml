@@ -1,13 +1,7 @@
 name: audit
 
 on:
-  workflow_call:
-    inputs:
-      node-version:
-        description: Node version to use for running audit-ci
-        required: false
-        type: string
-        default: 14
+  workflow_call: ~
 
 jobs:
   audit_ci:
@@ -20,8 +14,6 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v1
-        with:
-          node-version: ${{ inputs.node-version }}
 
       - name: Audit NPM dependencies
         run: npx audit-ci --moderate
