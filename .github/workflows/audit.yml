@@ -1,7 +1,13 @@
 name: audit
 
 on:
-  workflow_call: ~
+  workflow_call:
+    inputs:
+      audit-ci-directory:
+        type: string
+        description: The directory containing the package.json to audit
+        required: false
+        default: ./
 
 jobs:
   audit_ci:
@@ -16,7 +22,7 @@ jobs:
         uses: actions/setup-node@v2
 
       - name: Audit NPM dependencies
-        run: npx audit-ci --low
+        run: npx audit-ci --low --directory=${{ inputs.audit-ci-directory }}
 
   sensiolabs_security_checker:
     runs-on: ubuntu-latest

@@ -3,10 +3,11 @@ name: audit-npm
 on:
   workflow_call:
     inputs:
-      arguments:
+      directory:
         type: string
+        description: The directory containing the package.json to audit
         required: false
-        default: --low
+        default: ./
 
 jobs:
   audit_ci:
@@ -21,4 +22,4 @@ jobs:
         uses: actions/setup-node@v2
 
       - name: Audit NPM dependencies
-        run: npx audit-ci ${{ inputs.arguments }}
+        run: npx audit-ci --low --directory=${{ inputs.directory }}
