@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v2
 
       - name: Audit NPM dependencies
-        run: npx audit-ci --moderate
+        run: npx audit-ci --low
 
   sensiolabs_security_checker:
     runs-on: ubuntu-latest
