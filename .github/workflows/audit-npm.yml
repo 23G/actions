@@ -1,0 +1,25 @@
+name: audit-npm
+
+on:
+  workflow_call:
+    inputs:
+      directory:
+        type: string
+        description: The directory containing the package.json to audit
+        required: false
+        default: ./
+
+jobs:
+  audit_ci:
+    runs-on: ubuntu-latest
+    name: Audit NPM dependencies
+    timeout-minutes: 1
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+
+      - name: Audit NPM dependencies
+        run: npx audit-ci --low --directory=${{ inputs.directory }}
