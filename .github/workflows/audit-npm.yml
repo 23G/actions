@@ -22,4 +22,4 @@ jobs:
         uses: actions/setup-node@v2
 
       - name: Audit NPM dependencies
-        run: npx audit-ci --low --directory=${{ inputs.directory }}
+        run: npx audit-ci --high --directory=${{ inputs.directory }}
