@@ -34,7 +34,7 @@ on:
     branches: [ main, develop ]
 jobs:
   code-style:
-    uses: 23g/actions/.github/workflows/code-style.yml@v1
+    uses: 23g/actions/.github/workflows/code-style.yml@v2
     secrets:
       composer-auth: ${{ secrets.COMPOSER_AUTH }}
 #   with:
@@ -54,7 +54,7 @@ on:
     branches: [ main, develop ]
 jobs:
   tests:
-    uses: 23g/actions/.github/workflows/phpunit.yml@v1
+    uses: 23g/actions/.github/workflows/phpunit.yml@v2
     with:
       php-version: 8.0
 #     php-extensions: imagick, swoole
@@ -77,7 +77,7 @@ on:
     branches: [ main, develop ]
 jobs:
   static-analysis:
-    uses: 23g/actions/.github/workflows/phpstan.yml@v1
+    uses: 23g/actions/.github/workflows/phpstan.yml@v2
 #   with:
 #     php-version: 8.0
 #   secrets:
