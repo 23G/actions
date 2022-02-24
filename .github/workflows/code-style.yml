@@ -55,6 +55,7 @@ jobs:
 
       - name: Run PHPCBF
         if: ${{ github.event_name == 'pull_request' && inputs.fix }}
+        continue-on-error: true
         run: vendor/bin/phpcbf
 
       - name: Commit PHPCBF fixes
