@@ -3,6 +3,10 @@ name: code-style
 on:
   workflow_call:
     inputs:
+      fix:
+        required: false
+        type: boolean
+        default: false
       php-version:
         description: PHP version to use for running PHP_CodeSniffer
         required: false
@@ -48,6 +52,18 @@ jobs:
         run: composer install --prefer-dist --no-interaction --no-progress
         env:
           COMPOSER_AUTH: ${{ secrets.composer-auth }}
+
+      - name: Run PHPCBF
+        if: ${{ github.event_name == 'pull_request' && inputs.fix }}
+        run: vendor/bin/phpcbf
+
+      - name: Commit PHPCBF fixes
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: EndBug/add-and-commit@v8
+        with:
+          message: Apply fixes from `phpcbf`
+          committer_name: GitHub Actions
+          committer_email: actions@github.com
 
       - name: Run PHP_CodeSniffer
         run: vendor/bin/phpcs --report=checkstyle -q | cs2pr --graceful-warnings
